@@ -2,12 +2,11 @@
 
 ## Home Page
 ![](/screenshots/Splash.PNG)
-![](/screenshots/DataPicker.PNG)
 
-## Search Result and Order
-![](/screenshots/Feed.PNG)
-![](/screenshots/Order%20Completed.PNG)
-
+## Feed and Offers
+![](/screenshots/feed.PNG)
+![](/screenshots/details.PNG)
+![](/screenshots/WonPage.PNG)
 ## Login / Register
-![](/screenshots/Register.PNG)
-![](/screenshots/Login.PNG)
+![](/screenshots/register.PNG)
+![](/screenshots/login.PNG)
