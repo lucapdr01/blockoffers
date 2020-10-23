@@ -1,7 +1,7 @@
 # Description
 
 ## Home Page
-![](/screenshots/Splash.PNG)
+![](/screenshots/Spalsh.PNG)
 
 ## Feed and Offers
 ![](/screenshots/feed.PNG)
