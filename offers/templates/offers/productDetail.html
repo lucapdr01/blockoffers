@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <meta charset="UTF-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>BlockOffers</title>
+</head>
+<body>
+{% load crispy_forms_tags %}
+  <h1>Today's Offers</h1>
+
+<a href="/logout"><button class="btn logoutbt mybt">Logout</button></a>
+<a href="/"><button class="btn homebt mybt">Home</button></a>
+
+<div class="row">
+
+<div class="feed">
+    <div class="msg">
+            <div class="coln">
+                <h3>{{ product.description }}</h3>
+
+                 <img src="{% static 'images/martelloicon.png' %}" id="userimg"/>
+
+                        <h3>{{ product.seller }}</h3>
+                        <h3>{{ product.location }}</h3>
+                        <h3>{{ bestOffer }} $</h3>
+                        <h4>Expires in</h4>
+                        <h4><p id="demo"></p> </h4>
+                        <form method="post">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <button type="submit" class="btn btn-lg mybt">Offer</button>
+                         </form>
+            </div>
+            </div>
+    </div>
+
+</div>
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("{{ product.date.isoformat }}").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // Output the result in an element with id="demo"
+  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s ";
+
+  // If the count down is over, write some text
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+</body>
+</html>

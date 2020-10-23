@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+{% load index %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <meta charset="UTF-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>BlockOffers</title>
+</head>
+<body>
+{% load crispy_forms_tags %}
+  <h1>Today's Offers</h1>
+
+<a href="/logout"><button class="btn logoutbt mybt">Logout</button></a>
+<a href="/"><button class="btn homebt mybt">Home</button></a>
+
+<div class="row">
+  {% for product in products %}
+    {% if not product.isExpired %}
+<div class="feed">
+    <div class="msg">
+            <div class="coln">
+                <h3>{{ product.description }}</h3>
+
+                 <img src="{% static 'images/martelloicon.png' %}" id="userimg"/>
+
+                        <h3>{{ product.seller }}</h3>
+                        <h3>{{ product.location }}</h3>
+                        <h3>{{ bestOffers|index:forloop.counter0 }} $</h3>
+                        <h5> Expires {{ product.date}}</h5>
+
+                        <a href="{% url 'productDetail' pk=product.pk %}"><button type="submit" class="btn btn-lg mybt">Details</button></a>
+
+                </div>
+            </div>
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+
+</body>
+</html>

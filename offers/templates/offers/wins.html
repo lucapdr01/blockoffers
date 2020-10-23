@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+{% load index %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   <meta charset="UTF-8">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <title>Whon Auctions</title>
+</head>
+<body>
+{% load crispy_forms_tags %}
+  <h1>You Won</h1>
+
+<a href="/logout"><button class="btn logoutbt mybt">Logout</button></a>
+<a href="/"><button class="btn homebt mybt">Home</button></a>
+
+<div class="row">
+  {% for product in products %}
+    {% if product.isExpired %}
+<div class="feed">
+    <div class="msg">
+            <div class="coln">
+                <h3>{{ product.description }}</h3>
+
+                 <img src="{% static 'images/martelloicon.png' %}" id="userimg"/>
+
+                        <h3>{{ product.seller }}</h3>
+                        <h3>{{ product.location }}</h3>
+                        <h3>{{ product.bestPrice }} $</h3>
+                        <h5> Expired {{ product.date}}</h5>
+
+                </div>
+            </div>
+    </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+
+</body>
+</html>
